@@ -11,9 +11,10 @@
         <h1>Manajemen Akademis Mahasiswa</h1>
     </header>
     <main>
-        <h2>Table Tugas</h2>
+        <h2>Daftar Tugas</h2>
         <p>Jangan Lupa mengerjakan tugas, semangat !!!</p>
-        <table border="1">
+        <div id="table-scroll">
+            <table id="table" border="1">
             <thead>
                 <tr>
                     <th>No</th>
@@ -22,38 +23,30 @@
                     <th>status</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Membuat Website</td>
-                    <td>2024-07-01</td>
-                    <td>Belum Selesai</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Latihan Soal Matematika</td>
-                    <td>2024-06-25</td>
-                    <td>Selesai</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Membaca Buku Referensi</td>
-                    <td>2024-06-30</td>
-                    <td>Belum Selesai</td>
-                </tr>
+            <tbody id="tasktable">
+                <!-- auto isi menggunakan javascript-->
             </tbody>
         </table>
+        </div>
+        
         <button id="openpopup">+ Tambah</button>
-
         <div id="popup">
             <div id="popupcontent">
                 <span id="closepopup">&times;</span>
                 <h2>Input Jadwal Tugas</h2>
-                <form>
+                <form id ="taskform">
                     <label for="tugas">Nama:</label>
-                    <input type="text" id="tugas"><br><br>
+                    <input type="text" id="tugas" required><br><br>
+                    <label for="Mata Kuliah">Mata kuliah:</label>
+                    <input type="text" id="Mata Kuliah" required><br><br>
                     <label for id="date">Deadline:</label>
-                    <input type="date" id="date" value="2025-01-01"><br><br>
+                    <input type="date" id="date" value="2025-01-01" required><br><br>
+                    <label for="status">Status:</label>
+                    <select required id="status">
+                        <option value="belum">Belum</option>
+                        <option value="progress">progress</option>
+                        <option value="done">Selesai</option>
+                    </select>
                     <button type="submit">Simpan</button>
                 </form>
             </div>
