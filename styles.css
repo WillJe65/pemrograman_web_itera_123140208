@@ -1,35 +1,457 @@
-#popup{
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
+/* Reset dan Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container Utama */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Main Content */
+main {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Section Title */
+.section-title {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* Info Text */
+.info-text {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid #2196f3;
+    color: #1565c0;
+}
+
+/* Table Container dengan Scroll */
+.table-scroll-container {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #e1e8ed;
+}
+
+.scroll-wrapper {
+    overflow-x: auto;
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+    background: white;
+}
+
+th {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    position: sticky;
     top: 0;
+    z-index: 10;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e1e8ed;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s ease;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.belum {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.status-badge.progress {
+    background: #fff3e0;
+    color: #ef6c00;
+    border: 1px solid #ffe0b2;
+}
+
+.status-badge.done {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* Deadline Styling */
+.deadline-terlewat {
+    color: #c62828;
+    font-weight: 600;
+}
+
+.hampir-deadline {
+    color: #ef6c00;
+    font-weight: 600;
+}
+
+/* Action Buttons */
+.btn-edit, .btn-delete {
+    padding: 8px 15px;
+    margin: 2px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+    color: white;
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, #1976d2, #1565c0);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #d32f2f, #c62828);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(244, 67, 54, 0.3);
+}
+
+/* Add Button */
+.add-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+}
+
+.add-btn:hover {
+    background: linear-gradient(135deg, #2980b9, #2573a7);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* Popup Styling */
+#popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color:aliceblue;
+    background: rgba(41, 128, 185, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
 }
 
-#popup{
-    background-color: azure;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width : 80%;
+#popupcontent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
     max-width: 500px;
-    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
 }
 
-#closepopup{
-    color: #aaa;
+#closepopup {
+    cursor: pointer;
     float: right;
-    font-size: 28px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #7f8c8d;
+    transition: color 0.3s ease;
+}
+
+#closepopup:hover {
+    color: #e74c3c;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #27ae60, #219a52);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #219a52, #1e8e4f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: white;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Scrollbar Styling */
+.scroll-wrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 4px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2980b9, #2573a7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    main {
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    #popupcontent {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    th, td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+}
+
+.simple-filters {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+}
+
+.simple-filters h3 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.filter-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-item label {
+    font-weight: 600;
+    color: #2c3e50;
+    white-space: nowrap;
+}
+
+.status-filter, .deadline-filter {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.status-filter:focus, .deadline-filter:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Tambahkan ini ke CSS */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.task-counter {
+    background: #3498db;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.reset-filters {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.reset-filters:hover {
+    background: #7f8c8d;
+}
+
+.deadline-terlewat {
+    color: #e74c3c;
     font-weight: bold;
 }
 
-#closepopup:hover,
-#closepopup:focus{
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.hampir-deadline {
+    color: #f39c12;
+    font-weight: bold;
 }

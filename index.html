@@ -1,60 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manajemen Mahasiswa</title>
+    <title>Manajemen Tugas Mahasiswa</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Manajemen Akademis Mahasiswa</h1>
-    </header>
-    <main>
-        <h2>Daftar Tugas</h2>
-        <p>Jangan Lupa mengerjakan tugas, semangat !!!</p>
-        <div id="table-scroll">
-            <table id="table" border="1">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Tugas</th>
-                    <th>Deadline</th>
-                    <th>status</th>
-                </tr>
-            </thead>
-            <tbody id="tasktable">
-                <!-- auto isi menggunakan javascript-->
-            </tbody>
-        </table>
-        </div>
-        
-        <button id="openpopup">+ Tambah</button>
-        <div id="popup">
-            <div id="popupcontent">
-                <span id="closepopup">&times;</span>
-                <h2>Input Jadwal Tugas</h2>
-                <form id ="taskform">
-                    <label for="tugas">Nama:</label>
-                    <input type="text" id="tugas" required><br><br>
-                    <label for="Mata Kuliah">Mata kuliah:</label>
-                    <input type="text" id="Mata Kuliah" required><br><br>
-                    <label for id="date">Deadline:</label>
-                    <input type="date" id="date" value="2025-01-01" required><br><br>
-                    <label for="status">Status:</label>
-                    <select required id="status">
-                        <option value="belum">Belum</option>
-                        <option value="progress">progress</option>
-                        <option value="done">Selesai</option>
-                    </select>
-                    <button type="submit">Simpan</button>
-                </form>
+    <div class="container">
+        <header>
+            <h1>Manajemen Tugas Mahasiswa</h1>
+            <p>Kelola jadwal tugas Anda dengan mudah dan efisien</p>
+        </header>
+
+        <main>
+            <h2 class="section-title">Daftar Tugas</h2>
+            
+            <div class="info-text">
+                <strong>Tips:</strong> Jangan lupa mengerjakan tugas tepat waktu! Semangat belajar! 
             </div>
-        </div>
-        <script src="script.js"></script>
-    </main>
-    <footer>
-        <p>&copy; 2025 Pemograman Website, Dzaky Pramadhani</p>
-    </footer>
+            
+            <div class="simple-filters">
+                <h3>🔍 Filter Tampilan</h3>
+                <div class="filter-header">
+                    <span class="task-counter">Menampilkan 0 dari 0 tugas</span>
+                </div>
+                
+                <div class="filter-row">
+                    <div class="filter-item">
+                        <label>Status:</label>
+                        <select class="status-filter">
+                            <option value="all">Semua Status</option>
+                            <option value="belum">Belum Dikerjakan</option>
+                            <option value="progress">Dalam Pengerjaan</option>
+                            <option value="done">Selesai</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label>Deadline:</label>
+                        <select class="deadline-filter">
+                            <option value="all">Semua Deadline</option>
+                            <option value="today">Hari Ini</option>
+                            <option value="week">Minggu Ini</option>
+                            <option value="overdue">Terlewat</option>
+                        </select>
+                    </div>
+
+                    <button class="reset-filters">Reset</button>
+                </div>
+            </div>
+            <div class="table-scroll-container">
+                <div class="scroll-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tugas</th>
+                                <th>Mata Kuliah</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tasktable">
+                            <!-- Data akan diisi oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button id="openpopup" class="add-btn">
+                <span>+</span> Tambah Tugas Baru
+            </button>
+
+            <!-- Popup Form -->
+            <div id="popup">
+                <div id="popupcontent">
+                    <span id="closepopup">&times;</span>
+                    <h2 style="color: #2c3e50; margin-bottom: 20px;">Input Tugas Baru</h2>
+                    
+                    <form id="taskform">
+                        <div class="form-group">
+                            <label for="tugas">Nama Tugas:</label>
+                            <input type="text" id="tugas" placeholder="Masukkan nama tugas" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="matakuliah">Mata Kuliah:</label>
+                            <input type="text" id="matakuliah" placeholder="Masukkan nama mata kuliah" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Deadline:</label>
+                            <input type="date" id="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Status:</label>
+                            <select id="status" required>
+                                <option value="belum">Belum Dikerjakan</option>
+                                <option value="progress">Dalam Pengerjaan</option>
+                                <option value="done">Selesai</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Simpan Tugas
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Manajemen Tugas Mahasiswa | Dzaky Pramadhani</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
