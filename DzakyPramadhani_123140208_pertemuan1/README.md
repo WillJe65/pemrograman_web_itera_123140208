@@ -5,6 +5,8 @@
 
 Aplikasi Web Sederhana untuk mengelola jadwal tugas kuliah dengan fitur filter dan penyimpan lokal dengan menggunakan DOM
 
+![image_1]("resource/screenshoot/1.png")
+
 ### Fitur Utama:
 ✅ Tambah Tugas - Input tugas baru via popup form
 👀 Lihat Tugas - Tampilan tabel yang rapi
@@ -33,6 +35,7 @@ project/<br>
 ├── index.html      # Struktur aplikasi <br>
 ├── styles.css      # Styling dan layout  <br>
 └── script.js       # Logika dan functionality
+
 
 
 
