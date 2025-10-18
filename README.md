@@ -29,6 +29,8 @@ Aplikasi Web Sederhana untuk mengelola jadwal tugas kuliah dengan fitur filter d
 
 ### 📁 Struktur File
 project/
+
 ├── index.html      # Struktur aplikasi
 ├── styles.css      # Styling dan layout  
 └── script.js       # Logika dan functionality
+
