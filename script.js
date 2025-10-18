@@ -1,16 +1,21 @@
+//Popup elements
 const openpopup = document.getElementById("openpopup");
 const closepopup = document.getElementById("closepopup");
 const popup = document.getElementById("popup");
 
+//Popup event listeners
+//membuka popup
 openpopup.addEventListener('click', () => {
     popup.style.display = 'block';
 });
 
+//menutup popup
 closepopup.addEventListener('click', () => {
     popup.style.display = 'none';
     taskManager.cancelEdit();
 });
 
+//menutup popup ketika mengklik di luar area popup
 window.addEventListener('click', (e) => {
     if (e.target === popup) {
         popup.style.display = 'none';
@@ -18,28 +23,34 @@ window.addEventListener('click', (e) => {
     }
 });
 
+//task manager class
+//berisi method fitur seperti CRUD, filter, dan generate table
 class TaskManager {
+    //inisialisasi
     constructor() {
         this.tasks = this.loadTasks();
         this.currentEditId = null;
         this.init();
     }
 
+    //inisialisasi method
     init() {
         this.generateTable();
         this.setupEventListeners();
     }
 
+    //load tasks dari local storage metode DOM
     loadTasks() {
         const tasksJSON = localStorage.getItem("studenttasks");
         return tasksJSON ? JSON.parse(tasksJSON) : [];
     }
 
+    //load save tasks ke local storage metode DOM
     saveTasks() {
         localStorage.setItem("studenttasks", JSON.stringify(this.tasks));
     }
 
-    // METHOD FILTER 
+    //Filter tugas menggunakan status dan deadline 
     filterTasks() {
         const statusFilter = document.querySelector('.status-filter').value;
         const deadlineFilter = document.querySelector('.deadline-filter').value;
@@ -75,10 +86,12 @@ class TaskManager {
     }
 
     //Fungsi untuk Filter tanggal
+    //untuk hari ini
     isSameDay(date1, date2) {
         return date1.toDateString() === date2.toDateString();
     }
 
+    //untuk minggu ini
     isThisWeek(date) {
         const today = new Date();
         const startOfWeek = new Date(today);
@@ -89,8 +102,9 @@ class TaskManager {
         return date >= startOfWeek && date <= endOfWeek;
     }
 
-    // RENDER TABLE DENGAN FILTER
+    // generate tabel 
     generateTable() {
+        //generate table dengan filter yang dipilih sehingga menampilkan data yang sesuai
         const filteredTasks = this.filterTasks();
         const tablebody = document.getElementById("tasktable");
         tablebody.innerHTML = "";
@@ -170,7 +184,7 @@ class TaskManager {
         this.generateTable(); // Render ulang dengan filter
     }
 
-    //Rewrite
+    //Rewrite atau edit tugas yang sudah ada
     editTask(id, updatedData) {
         const taskIndex = this.tasks.findIndex(task => task.id === id);
         if (taskIndex !== -1) {
@@ -180,7 +194,7 @@ class TaskManager {
         }
     }
 
-    //Delete
+    //Delete tugas yang sudah ada
     deleteTask(id) {
         if (confirm("Apakah anda yakin untuk menghapus tugas ini?")) {
             this.tasks = this.tasks.filter(task => task.id !== id);
@@ -249,7 +263,7 @@ class TaskManager {
         popup.style.display = 'none';
     }
 
-
+    //mengosongkan form
     clearForm() {
         document.getElementById('taskform').reset();
     }
@@ -278,7 +292,7 @@ class TaskManager {
             alert(this.currentEditId ? 'Tugas berhasil diupdate!' : 'Tugas berhasil ditambahkan!');
         });
 
-        // EVENT LISTENERS UNTUK FILTER
+        // event listener untuk filter
         document.querySelector('.status-filter').addEventListener('change', () => {
             this.generateTable();
         });
@@ -287,7 +301,7 @@ class TaskManager {
             this.generateTable();
         });
 
-        // Reset filter button (opsional)
+        // Reset filter button
         const resetBtn = document.querySelector('.reset-filters');
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
@@ -299,7 +313,7 @@ class TaskManager {
     }
 }
 
-// Initialize
+// Initialize dan pemanggilan class task manager
 document.addEventListener('DOMContentLoaded', () => {
     window.taskManager = new TaskManager();
 });

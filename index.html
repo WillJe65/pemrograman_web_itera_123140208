@@ -20,6 +20,7 @@
                 <strong>Tips:</strong> Jangan lupa mengerjakan tugas tepat waktu! Semangat belajar! 
             </div>
             
+            <!--Fitur Filter untuk melakukan filterisasi berdasarkan status atau jadwal deadline*/-->
             <div class="simple-filters">
                 <h3>🔍 Filter Tampilan</h3>
                 <div class="filter-header">
@@ -28,6 +29,7 @@
                 
                 <div class="filter-row">
                     <div class="filter-item">
+                        <!-- filter status-->
                         <label>Status:</label>
                         <select class="status-filter">
                             <option value="all">Semua Status</option>
@@ -38,6 +40,7 @@
                     </div>
 
                     <div class="filter-item">
+                        <!-- filter Deadline-->
                         <label>Deadline:</label>
                         <select class="deadline-filter">
                             <option value="all">Semua Deadline</option>
@@ -50,6 +53,8 @@
                     <button class="reset-filters">Reset</button>
                 </div>
             </div>
+
+            <!-- Tabel Tugas dynamis-->
             <div class="table-scroll-container">
                 <div class="scroll-wrapper">
                     <table>
@@ -63,6 +68,7 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
+                        <!--Auto fill menggunakan Scripts sesuai dengan tugas yang ada*/-->
                         <tbody id="tasktable">
                             <!-- Data akan diisi oleh JavaScript -->
                         </tbody>
@@ -111,13 +117,12 @@
                     </form>
                 </div>
             </div>
+            <script src="script.js"></script>
         </main>
 
         <footer>
             <p>&copy; 2025 Manajemen Tugas Mahasiswa | Dzaky Pramadhani</p>
         </footer>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
