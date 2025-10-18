@@ -1,6 +1,6 @@
 ﻿# Manajemen Tugas Mahasiswa
-<br><br>
-### Deskripsi ###
+<br>
+### Deskripsi
 
 Aplikasi Web Sederhana untuk mengelola jadwal tugas kuliah dengan fitur filter dan penyimpan lokal dengan menggunakan DOM
 
@@ -32,6 +32,7 @@ project/<br>
 ├── index.html      # Struktur aplikasi <br>
 ├── styles.css      # Styling dan layout  <br>
 └── script.js       # Logika dan functionality
+
 
 
 
