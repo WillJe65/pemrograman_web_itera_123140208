@@ -28,12 +28,10 @@ Aplikasi Web Sederhana untuk mengelola jadwal tugas kuliah dengan fitur filter d
     -   Klik "Hapus" untuk menghapus tugas
 
 ### 📁 Struktur File
-project/
-
-├── index.html      # Struktur aplikasi
-
-├── styles.css      # Styling dan layout  
-
+project/<br>
+├── index.html      # Struktur aplikasi <br>
+├── styles.css      # Styling dan layout  <br>
 └── script.js       # Logika dan functionality
+
 
 
