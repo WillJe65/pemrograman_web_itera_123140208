@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Tugas Mahasiswa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Manajemen Tugas Mahasiswa</h1>
+            <p>Kelola jadwal tugas Anda dengan mudah dan efisien</p>
+        </header>
+
+        <main>
+            <h2 class="section-title">Daftar Tugas</h2>
+            
+            <div class="info-text">
+                <strong>Tips:</strong> Jangan lupa mengerjakan tugas tepat waktu! Semangat belajar! 
+            </div>
+            
+            <!--Fitur Filter untuk melakukan filterisasi berdasarkan status atau jadwal deadline*/-->
+            <div class="simple-filters">
+                <h3>🔍 Filter Tampilan</h3>
+                <div class="filter-header">
+                    <span class="task-counter">Menampilkan 0 dari 0 tugas</span>
+                </div>
+                
+                <div class="filter-row">
+                    <div class="filter-item">
+                        <!-- filter status-->
+                        <label>Status:</label>
+                        <select class="status-filter">
+                            <option value="all">Semua Status</option>
+                            <option value="belum">Belum Dikerjakan</option>
+                            <option value="progress">Dalam Pengerjaan</option>
+                            <option value="done">Selesai</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <!-- filter Deadline-->
+                        <label>Deadline:</label>
+                        <select class="deadline-filter">
+                            <option value="all">Semua Deadline</option>
+                            <option value="today">Hari Ini</option>
+                            <option value="week">Minggu Ini</option>
+                            <option value="overdue">Terlewat</option>
+                        </select>
+                    </div>
+
+                    <button class="reset-filters">Reset</button>
+                </div>
+            </div>
+
+            <!-- Tabel Tugas dynamis-->
+            <div class="table-scroll-container">
+                <div class="scroll-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tugas</th>
+                                <th>Mata Kuliah</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <!--Auto fill menggunakan Scripts sesuai dengan tugas yang ada*/-->
+                        <tbody id="tasktable">
+                            <!-- Data akan diisi oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button id="openpopup" class="add-btn">
+                <span>+</span> Tambah Tugas Baru
+            </button>
+
+            <!-- Popup Form -->
+            <div id="popup">
+                <div id="popupcontent">
+                    <span id="closepopup">&times;</span>
+                    <h2 style="color: #2c3e50; margin-bottom: 20px;">Input Tugas Baru</h2>
+                    
+                    <form id="taskform">
+                        <div class="form-group">
+                            <label for="tugas">Nama Tugas:</label>
+                            <input type="text" id="tugas" placeholder="Masukkan nama tugas" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="matakuliah">Mata Kuliah:</label>
+                            <input type="text" id="matakuliah" placeholder="Masukkan nama mata kuliah" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Deadline:</label>
+                            <input type="date" id="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Status:</label>
+                            <select id="status" required>
+                                <option value="belum">Belum Dikerjakan</option>
+                                <option value="progress">Dalam Pengerjaan</option>
+                                <option value="done">Selesai</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Simpan Tugas
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="KalkulatorIPK">
+                <h3 class="section-title">Kalkulator IPK</h3>
+                <form id="ipkForm">
+                    <div class="form-group">
+                        <label for="matakuliah_ipk">Mata Kuliah:</label>
+                        <input type="text" id="matakuliah_ipk" placeholder="Masukkan nama mata kuliah" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sks">SKS:</label>
+                        <input type="number" id="sks" min="1" max="6" placeholder="Masukkan jumlah SKS" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nilai">Nilai:</label>
+                        <select id="nilai" required>
+                            <option value="4.00">A</option>
+                            <option value="3.50">AB</option>
+                            <option value="3.00">B</option>
+                            <option value="2.50">BC</option>
+                            <option value="2.00">C</option>
+                            <option value="1.00">D</option>
+                            <option value="0.00">E</option>
+                        </select>
+                    </div>
+                    <button type="button" class="add-mk-btn">Tambah Mata Kuliah</button>
+                    
+                    <div class="mata-kuliah-list">
+                        <h4>Daftar Mata Kuliah</h4>
+                        <table id="mk-table">
+                            <thead>
+                                <tr>
+                                    <th>Mata Kuliah</th>
+                                    <th>SKS</th>
+                                    <th>Nilai</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="hasil-ipk">
+                        <h4>Hasil Perhitungan</h4>
+                        <p>Total SKS: <span id="total-sks">0</span></p>
+                        <p>IPK: <span id="hasil-ipk">0.00</span></p>
+                    </div>
+                    
+                    <button type="button" class="hitung-ipk-btn">Hitung IPK</button>
+                    <button type="button" class="reset-ipk-btn">Reset</button>
+                </form>
+            </div>
+            <script src="script.js"></script>
+            <script src="ipk.js"></script>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Manajemen Tugas Mahasiswa | Dzaky Pramadhani</p>
+        </footer>
+    </div>
+</body>
+</html>
