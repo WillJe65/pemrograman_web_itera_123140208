@@ -1,3 +1,11 @@
+// 👇 SEMUA IMPORT YANG DIPERLUKAN ADA DI SINI
+import { useState } from 'react';
+import { useBooks } from '../hooks/useBooks'; // <-- Sesuaikan path ini
+import Controls from './Controls';             // <-- Sesuaikan path ini
+import BookItem from './BookItem';           // <-- Sesuaikan path ini
+import Modal from './Modal';                 // <-- Sesuaikan path ini
+import BookForm from './BookForm';           // <-- Sesuaikan path ini
+
 function HomePage() {
   const { books } = useBooks();
   const [isModalOpen, setIsModalOpen] = useState(false);

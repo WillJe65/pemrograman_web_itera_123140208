@@ -1,3 +1,7 @@
+// 👇 TAMBAHKAN IMPORT ANDA DI SINI
+import { useBooks } from '../context/BookContext'; // <-- Sesuaikan path ini
+import { STATUSES } from '../context/BookContext'; // <-- Sesuaikan path ini
+
 function BookItem({ book, onEdit }) {
   const { deleteBook } = useBooks();
 
@@ -15,7 +19,7 @@ function BookItem({ book, onEdit }) {
   };
   
   const handleDelete = () => {
-     deleteBook(book.id);
+      deleteBook(book.id);
   }
 
   return (
@@ -26,7 +30,7 @@ function BookItem({ book, onEdit }) {
         <span
           className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-medium ${getStatusColor(book.status)}`}
         >
-          {STATUSES[book.status]}
+          {STATUSES[book.status]} {/* <-- STATUSES digunakan di sini */}
         </span>
       </div>
       <div className="mt-4 flex justify-end gap-2 border-t pt-4">
@@ -46,3 +50,5 @@ function BookItem({ book, onEdit }) {
     </li>
   );
 }
+
+export default BookItem; // <-- Pastikan Anda juga mengekspor komponennya

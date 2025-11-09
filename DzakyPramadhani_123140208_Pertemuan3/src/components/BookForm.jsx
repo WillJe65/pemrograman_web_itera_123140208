@@ -1,27 +1,31 @@
+// 👇 TAMBAHKAN IMPORT ANDA DI SINI
+import { useState, useEffect } from 'react';
+import { useBooks } from '../context/BookContext';  // <-- Sesuaikan path ini
+import { STATUSES } from '../context/BookContext'; // <-- Sesuaikan path ini
+
 function BookForm({ bookToEdit, onDone }) {
   const { addBook, updateBook } = useBooks();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [status, setStatus] = useState('not_started');
 
-
+  // Mengisi form saat mode 'edit' atau mengosongkan saat mode 'add'
   useEffect(() => {
     if (bookToEdit) {
       setTitle(bookToEdit.title);
       setAuthor(bookToEdit.author);
       setStatus(bookToEdit.status);
     } else {
-      
+      // Reset untuk mode 'add'
       setTitle('');
       setAuthor('');
       setStatus('not_started');
     }
-  }, [bookToEdit]);
+  }, [bookToEdit]); // <-- Dependency yang benar
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !author) {
-      // Don't use alert, use a better UI element in a real app
       console.error('Please fill in both title and author.');
       return;
     }
@@ -29,12 +33,14 @@ function BookForm({ bookToEdit, onDone }) {
     const bookData = { title, author, status };
 
     if (bookToEdit) {
+      // Mode Edit
       updateBook(bookToEdit.id, bookData);
     } else {
+      // Mode Tambah
       addBook(bookData);
     }
     
-    onDone(); 
+    onDone(); // Menutup modal setelah submit
   };
 
   return (
@@ -48,6 +54,7 @@ function BookForm({ bookToEdit, onDone }) {
           onChange={(e) => setTitle(e.target.value)}
           className="w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
           placeholder="The Great Gatsby"
+          disabled={!!bookToEdit} // Opsional: nonaktifkan jika mengedit
         />
       </div>
       <div>
@@ -59,6 +66,7 @@ function BookForm({ bookToEdit, onDone }) {
           onChange={(e) => setAuthor(e.target.value)}
           className="w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
           placeholder="F. Scott Fitzgerald"
+          disabled={!!bookToEdit} // Opsional: nonaktifkan jika mengedit
         />
       </div>
       <div>
@@ -92,3 +100,5 @@ function BookForm({ bookToEdit, onDone }) {
     </form>
   );
 }
+
+export default BookForm; // <-- Jangan lupa export

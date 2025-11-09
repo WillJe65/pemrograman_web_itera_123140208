@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BookProvider } from './context/BookContext'; 
+import HomePage from './pages/home';         
+import './App.css';
 
 export default function App() {
   return (
+    // "Bungkus" seluruh aplikasi Anda dengan Provider
     <BookProvider>
       <div className="min-h-screen bg-gray-50 font-inter">
         <header className="bg-white shadow-sm">
@@ -13,10 +13,10 @@ export default function App() {
           </nav>
         </header>
         <main>
+          {/* Render Halaman Utama Anda */}
           <HomePage />
         </main>
       </div>
     </BookProvider>
   );
 }
-
