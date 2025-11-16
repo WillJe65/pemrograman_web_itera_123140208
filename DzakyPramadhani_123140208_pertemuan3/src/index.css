@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 min-h-screen;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 transform hover:scale-105;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 focus:ring-blue-500 shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-gray-600 to-gray-700 text-white hover:from-gray-700 hover:to-gray-800 focus:ring-gray-500;
+  }
+  
+  .btn-success {
+    @apply bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 focus:ring-green-500;
+  }
+  
+  .btn-warning {
+    @apply bg-gradient-to-r from-yellow-600 to-amber-600 text-white hover:from-yellow-700 hover:to-amber-700 focus:ring-yellow-500;
+  }
+  
+  .btn-danger {
+    @apply bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-700 hover:to-pink-700 focus:ring-red-500;
+  }
+  
+  .card {
+    @apply bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-2xl p-6 transition-all duration-300 hover:shadow-purple-500/20 hover:transform hover:-translate-y-2 border border-gray-700;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-white placeholder-gray-400 transition-all duration-300;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-300 mb-2;
+  }
+  
+  .status-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium border;
+  }
+  
+  .status-owned {
+    @apply bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-300 border-green-500/30;
+  }
+  
+  .status-reading {
+    @apply bg-gradient-to-r from-yellow-500/20 to-amber-500/20 text-yellow-300 border-yellow-500/30;
+  }
+  
+  .status-wishlist {
+    @apply bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border-blue-500/30;
+  }
+  
+  .nav-link {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .nav-link-active {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg;
+  }
+  
+  .nav-link-inactive {
+    @apply text-gray-300 hover:text-white hover:bg-gray-800/50;
+  }
+  
+  .filter-btn {
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 border;
+  }
+  
+  .filter-btn-active {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600 text-white border-transparent shadow-lg;
+  }
+  
+  .filter-btn-inactive {
+    @apply bg-gray-800/50 text-gray-300 border-gray-600 hover:bg-gray-700/50 hover:text-white;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-sm bg-gray-900/70 border border-gray-700/50;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+  }
+  
+  /* Animations */
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-purple-600 to-blue-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply from-purple-700 to-blue-700;
+}
+
+/* Tambahkan di bagian components */
+.status-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border backdrop-blur-sm;
+}
+
+.status-owned {
+  @apply bg-green-500/20 text-green-300 border-green-500/30;
+}
+
+.status-reading {
+  @apply bg-yellow-500/20 text-yellow-300 border-yellow-500/30;
+}
+
+.status-wishlist {
+  @apply bg-blue-500/20 text-blue-300 border-blue-500/30;
+}
