@@ -2,7 +2,7 @@
 
 Aplikasi web untuk mengelola koleksi buku pribadi dengan antarmuka modern.
 
-![image_1](https://github.com/WillJe65/pemrograman_web_itera_123140208/blob/main/DzakyPramadhani_123140208_pertemuan1/resource/screenshoot/1.png)
+![image_1](https://github.com/WillJe65/pemrograman_web_itera_123140208/blob/main/DzakyPramadhani_123140208_pertemuan3/screenshoot/1.png)
 
 
 ## ✨ Fitur
@@ -16,7 +16,7 @@ Aplikasi web untuk mengelola koleksi buku pribadi dengan antarmuka modern.
 - **🎨 Tema Modern** - Gradient night theme 
 - **📱 Responsif** - Tampilan optimal di semua device
 
-![image_2](https://github.com/WillJe65/pemrograman_web_itera_123140208/blob/main/DzakyPramadhani_123140208_pertemuan1/resource/screenshoot/1.png)
+![image_2](https://github.com/WillJe65/pemrograman_web_itera_123140208/blob/main/DzakyPramadhani_123140208_pertemuan3/screenshoot/2.png)
 
 
 ## 🚀 Teknologi
@@ -28,7 +28,7 @@ Aplikasi web untuk mengelola koleksi buku pribadi dengan antarmuka modern.
 - LocalStorage
 
 
-![image_3](https://github.com/WillJe65/pemrograman_web_itera_123140208/blob/main/DzakyPramadhani_123140208_pertemuan1/resource/screenshoot/1.png)
+![image_3](https://github.com/WillJe65/pemrograman_web_itera_123140208/blob/main/DzakyPramadhani_123140208_pertemuan3/screenshoot/3.png)
 
 
 ## 🛠️ Menjalankan
